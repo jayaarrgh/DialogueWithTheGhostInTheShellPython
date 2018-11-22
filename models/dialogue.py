@@ -23,17 +23,24 @@ class Dialogue:
         self._nodes.append(node)
         node._node_id = self._nodes.index(node)
 
-    def add_option(self, text, node, dest):
-        if dest not in self._nodes and dest is not None:
-            self.add_node(dest)
+    def add_option(self, text, node, destination):
+        """Add options to a node
+        
+        Paramaters: 
+            text -- display text for the option
+            node -- the node the options are added to
+            destination -- the node the option leads to"""
+
+        if destination not in self._nodes and destination is not None:
+            self.add_node(destination)
 
         if node not in self._nodes:
             self.add_node(node)
 
-        if dest is None:
+        if destination is None:
             dialogue_option = DialogueOption(text, -1)
         else:
-            dialogue_option = DialogueOption(text, dest.node_id)
+            dialogue_option = DialogueOption(text, destination.node_id)
 
         node.options.append(dialogue_option)
 
