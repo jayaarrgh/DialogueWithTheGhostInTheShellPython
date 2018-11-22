@@ -3,22 +3,22 @@ from models import *
 #TODO write functions to write and parse XML or JSON 
 class DialogueBuilder:
     
-    @classmethod
-    def build_dialogue(cls):
+    @staticmethod
+    def build_dialogue():
         """builds and returns a dialogue"""
         # initialize the Dialogue
         d = Dialogue()
 
         # create and add nodes to the dialogue 
         # and unpack the returned tuple
-        d, nodes = cls.create_and_add_nodes_to_dialogue(d)
+        d, nodes = DialogueBuilder.create_and_add_nodes_to_dialogue(d)
 
         # add options to the nodes and return the dialogue
-        return cls.add_options_to_dialogue(d, nodes)
+        return DialogueBuilder.add_options_to_dialogue(d, nodes)
 
 
-    @classmethod
-    def create_and_add_nodes_to_dialogue(cls, dialogue):
+    @staticmethod
+    def create_and_add_nodes_to_dialogue(dialogue):
         """Create nodes and add them to a dialogue, returning the dialogue and tuple of nodes"""
         # create the nodes
         n1 = DialogueNode("Hello!")
@@ -56,8 +56,8 @@ class DialogueBuilder:
         return (dialogue, (n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14))
 
 
-    @classmethod
-    def add_options_to_dialogue(cls, dialogue, nodes):
+    @staticmethod
+    def add_options_to_dialogue(dialogue, nodes):
         # unpack the tuple of nodes
         n1,n2,n3,n4,n5,n6,n7,n8,n9,n10,n11,n12,n13,n14 = nodes
 
